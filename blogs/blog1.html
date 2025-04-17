@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medium-Style Blog</title>
+    <link rel="stylesheet" href="./blogstyles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">vyre.reporting</div>
+        <div class="theme-toggle" id="themeToggle">
+            <div class="toggle-circle"></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <article>
+            <h1 class="article-title">4chan Hacked by Soyjack.Party: Outdated Security Alert!🚨</h1>
+            <div class="article-meta">
+            
+            <img src="https://imgs.search.brave.com/XqksqCb8InMv6B8c1rOePXg8URa1ScCW0WmHWlow8gg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy13b3JsZC5uZXQv/d3AtY29udGVudC91/cGxvYWRzLzIwMjEv/MDMvNGNoYW4tTG9n/by1IaXN0b3J5LTcw/MHg0MjguanBn" alt="4CHAN" class="featured-image">
+            <div class="image-caption">idk what this is bro!</div>
+            
+            <div class="article-content">
+                <p>Yesterday, the internet stood still - and not because of a new Elon tweet. This was something far more... vintage. <i>The infamous imageboard 4chan, often hailed as the birthplace of modern internet chaos, was hacked in spectacular fashion.</i> 
+                    <br>And the culprits? A rogue gang of ex-4chan dwellers from an equally chaotic corner of the web called <i><b>Soyjack.party</b></i>, or “Sharty” for short.
+                    <br>This wasn’t just a case of <i>“oops, the site is down.”</i></p>
+                    
+                    <p><i>It was a bloody full-scale breach</i></p>
+                    
+                    <h3>💥What Happened?</h3>
+                    <p>The attackers exploited a long-standing vulnerability in 4chan’s backend, accessing private staff forums, internal emails, IP logs of janitors (low-level moderators), and even banned user databases. But how did they get in?<br>
+                        🔒No phishing.<br>
+                        🔒No password reuse.<br>
+                        🔒No social engineering.<br>
+                        <i>They simply exploited insecure legacy code — the kind that should’ve been <u>updated years ago</u>.</i></p>
+
+                    <p>Let’s get technical for a moment:<br>
+                        &nbsp;&nbsp;📍 4chan’s backend is built in PHP (yes, still).<br>
+                        &nbsp;&nbsp;📍 Some boards allow PDF uploads, but the site doesn’t verify the file type properly.<br>
+                        &nbsp;&nbsp;📍 The attackers uploaded a PostScript file, which got passed to an image processor called Ghostscript to generate a thumbnail.<br>
+                        <br>
+                        <b>Problem‼️:</b> 4chan was using <i>Ghostscript</i> from 2012, riddled with vulnerabilities.<br>
+                        Using known exploits listed in the CVE (Common Vulnerabilities and Exposures) database, the hackers gained access to elevated privileges.<br>
+                        And that was that. Full access, admin-level control, and a digital walk through 4chan’s janitorial closet.</p>
+
+                    <h3>🧢 Who Are These Hackers?</h3>
+                    <p>
+                        The attackers are not random trolls. They’re the exiles of 4chan’s old QA board, a section originally meant for questions and answers that descended into meme warfare, janitor-bashing, and relentless moderation debates.
+                        In 2021, QA was removed for being too chaotic. But its spirit lived on in Soyjack.party, which now made a triumphant (albeit hostile) return by hacking back into their old stomping grounds.
+                    </p>
+
+                    <h3>📊Better Future: Modern Databases</h3>
+                    <p>
+                        If 4chan’s outdated MySQL setup gives you hives, here’s some hope. Modern applications are shifting to high-performance databases like Timescale, an open-source solution built on PostgreSQL. It’s optimized for real-time analytics, time-series data, and low-latency queries — perfect for scale-hungry applications.
+                        With automatic partitioning and a hybrid row-column engine, Timescale is a lesson in what could have been if 4chan had stayed modern.
+                    </p>
+
+                    <p><b>This hack wasn’t just about 4chan. It was a cautionary tale for anyone running legacy infrastructure. Ignoring updates, running decade-old OS versions, and skipping file type validation?<br>That’s an open invitation to the internet’s wildest actors.<br>
+                        As meme wars rage on in digital shadows, one truth remains: <i>Patch your stuff.</i></b></p>
+
+               </div>
+        </article>
+    </div>
+    
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use device preference
+        const currentTheme = localStorage.getItem('theme') || 
+                             (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        // Apply the current theme
+        if (currentTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        } else {
+            document.body.removeAttribute('data-theme');
+        }
+        
+        // Handle toggle click
+        themeToggle.addEventListener('click', function() {
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
